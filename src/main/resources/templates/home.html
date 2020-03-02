@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Hello!</h1>
+    <p>Welcome to <span th:text="${appName}">Our App</span></p>
+    <form action="/creapartita" method="get">
+        <input type="submit" value="Crea Partita">
+    </form><br>
+    <form action="/cercapartita">
+        <input type="text" id="idpartita" name="idpartita">
+        <input type="submit" value="Unisciti alla partita">
+    </form>
+</body>
+</html>
