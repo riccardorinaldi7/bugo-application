@@ -12,6 +12,10 @@ input[type="submit"] {
   color: white;
 }
 
+input[type="submit"]:hover{
+  background-color: rgb(63, 63, 63);
+}
+
 #idpartita {
   margin: 20px auto;
   width: 250px;

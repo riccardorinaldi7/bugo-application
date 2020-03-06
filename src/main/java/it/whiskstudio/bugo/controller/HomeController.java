@@ -6,12 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
 import java.util.Random;
 
 @Controller
 public class HomeController {
     @Value("${spring.application.name}")
     String appName;
+
+    @Resource
+    Random rand;
 
     @GetMapping("/")
     public String homePage(Model model){
@@ -21,24 +25,15 @@ public class HomeController {
 
     @GetMapping("/creapartita")
     public String creaPartita(Model model){
-        Random rand = new Random(0);
-        int n1 = rand.nextInt(10);
-        int n2 = rand.nextInt(10);
-        int n3 = rand.nextInt(10);
-        String c4 = getCharForNumber(rand.nextInt(27));
-        String c5 = getCharForNumber(rand.nextInt(27));
-        String idPartita = "" + n1 + n2 + n3 + c4 + c5;
-        model.addAttribute("idPartita", idPartita);
+
+        model.addAttribute("idPartita", rand.nextInt());
         return "creapartita";
     }
 
-    @GetMapping("/cercapartita")
+    @GetMapping("/trovapartita")
     public String cercaPartita(Model model, @RequestParam String idpartita){
         model.addAttribute("idPartita", idpartita);
-        return "cercapartita";
+        return "trovapartita";
     }
 
-    private String getCharForNumber(int i) {
-        return i > 0 && i < 27 ? String.valueOf((char)(i + 64)) : null;
-    }
 }
